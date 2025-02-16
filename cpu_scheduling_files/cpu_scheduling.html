@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+
+<body class="text-center">
+    <!-- align all the child elements to center -->
+    <h1 class="mt-3">CPU Scheduling Algorithm Visualizer</h1>
+    <div class="container mt-5 mb-5">
+        <div class="row ">
+            <!--   gap-2 :- ensures a gap of 2 between each column element-->
+            <div class="col-md-2 ">
+                <button type="button" class="newArray btn btn-lg btn-info" onclick="setSizeOfProcess()">
+                    New Processes
+                </button>
+            </div>
+            <div class="col-md-4  gap-3 d-sm-flex" id="input">
+                <span id="size">Size
+                    <input id="arr_sz" type="range" min="3" max="10" step="1" value="5" oninput="setSizeOfProcess()" />
+                </span>
+                <span id="speed">Speed
+                    <input id="speed_input" type="range" min="20" max="300" value="60" oninput="changeSpeed()" />
+                </span>
+            </div>
+            <div class="col-md-6  d-flex justify-content-around">
+                <button type="button" class="fcfs btn btn-lg btn-outline-primary" onclick="first_come_first_serve()">
+                    FCFS
+                </button>
+                <button type="button" class="rr btn btn-lg btn-outline-primary" onclick="round_robin()">
+                    Round Robin
+                </button>
+                <button type="button" class="sjf btn btn-lg btn-outline-primary" onclick="shortest_job_first()">
+                    SJF
+                </button>
+                <button type="button" class="hrrn btn btn-lg btn-outline-primary" onclick="highest_response_ratio()">
+                    HRRN
+                </button>
+                <button type="button" class="srjf btn btn-lg btn-outline-primary"
+                    onclick="shortest_remaining_job_first()">
+                    SRJF
+                </button>
+                <button type="button" class="priority btn btn-lg btn-outline-primary" onclick="priority()">
+                    Priority
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 d-flex justify-content-center align-items-center">
+            <div class="col-md-2" id="processID">
+            </div>
+            <div class="col-md-2" id="arrival_time">
+            </div>
+            <div class="col-md-2" id="burst_time">
+            </div>
+            <div class="col-md-2" id="completion_time">
+            </div>
+            <div class="col-md-2" id="turn_around_time">
+            </div>
+            <div class="col-md-2" id="waiting_time">
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-3">
+            Queue
+        </div>
+        <div class="col-md-8 d-flex justify-content-center align-items-center">
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <script src="cpu_scheduling.js"></script>
+    <script src="fcfs.js"></script>
+</body>
+
+</html>

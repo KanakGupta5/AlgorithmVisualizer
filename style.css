@@ -33,6 +33,12 @@ body {
     transition: 0.1s all ease;
 }
 
+.flex-item-schedule{
+    background: cyan;
+    border: 1pt solid black;
+    transition: 0.1s all ease;
+}
+
 .row{
     display: grid;
     grid-template-columns: 1fr 1fr 2fr;

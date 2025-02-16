@@ -1,0 +1,3 @@
+const metadata = {
+    project_intro:"The Algorithm Analyzer is a dynamic tool designed to evaluate and visualize the performance of various algorithms. This tool provides detailed insights into their efficiency and execution.With intuitive visualizations and performance metrics, the Algorithm Analyzer helps in gaining a deeper understanding of algorithmic behavior, optimizing your choice of algorithms, and fostering algorithm design skills.",
+}
