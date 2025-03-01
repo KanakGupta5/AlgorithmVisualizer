@@ -39,9 +39,20 @@ body {
     transition: 0.1s all ease;
 }
 
+.flex-item-queue{
+    background: pink;
+    border: 1pt solid black;
+    width: 50px;
+    transition: 0.1s all ease;
+}
+
 .row{
     display: grid;
     grid-template-columns: 1fr 1fr 2fr;
+}
+
+#timestamp {
+    color: rgb(231, 20, 91);
 }
 
 #input{

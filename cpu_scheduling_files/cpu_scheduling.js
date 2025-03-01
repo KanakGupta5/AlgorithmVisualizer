@@ -1,13 +1,15 @@
 let array = [];
-let delay = 260;
-let noOfProcess = 5;
+let delay = 260, time = 0, noOfProcess = 5;
 let process_Obj = {
     process_id: '',
     arrival_time: 0,
+    start_time: 0,
     burst_time: 0,
+    rem_burst_time: 0,
     completion_time: 0,
     turn_around_time: 0,
     waiting_time: 0,
+    status: 'new',
 };
 let id_property_mapping = {
     process_id: {
@@ -36,9 +38,17 @@ let id_property_mapping = {
     },
 };
 
-let compareClr = 'blue', foundClr = 'green', selectedRangeClr = 'orange', defaultClr = 'cyan';
+let compareClr = 'blue', completedClr = 'greenyellow', readyClr = 'yellow', runningClr ='orange', defaultClr = 'cyan';
 
+init();
 createNewArray(noOfProcess);
+
+function init(){
+    const ele = document.querySelector("#timestamp");
+    if(ele)
+        ele.innerHTML = time;
+}
+
 
 function disableSchedulingBtn() {
     document.querySelector(".fcfs").disabled = true;
@@ -94,6 +104,7 @@ function createNewArray(noOfProcess) {
         temp["process_id"] = 'P' + i;
         temp["arrival_time"] = (Math.floor(Math.random() * 50) % noOfProcess);
         temp["burst_time"] = (Math.floor(Math.random() * 6) % 7) + 1;
+        temp["rem_burst_time"] = temp["burst_time"];
         temp["completion_time"] = '';
         temp["turn_around_time"] = '';
         temp["waiting_time"] = '';
@@ -111,12 +122,15 @@ function populate_colums(id_name, key_name) {
     for (let i = -1; i < array.length; i++) {
         const ele = document.createElement("div");
         ele.style.height = `40px`;
-        ele.classList.add('bar');
         ele.classList.add('flex-item-schedule');
-        if (i == -1)
+        if (i == -1){
+            ele.classList.add('bar_' + key_name);
             ele.innerText = id_property_mapping[key_name] && id_property_mapping[key_name].label ? id_property_mapping[key_name].label : (id_property_mapping[key_name] ? id_property_mapping[key_name] : '');
-        else
+        }
+        else{
             ele.innerText = array[i][key_name];
+            ele.classList.add(key_name + '_' + array[i].process_id);
+        }
         id_element.appendChild(ele);
     }
 }
