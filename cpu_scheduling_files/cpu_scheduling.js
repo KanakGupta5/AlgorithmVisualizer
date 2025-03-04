@@ -1,4 +1,4 @@
-let array = [];
+let array = [], temp_array_copy = [];
 let delay = 260, time = 0, noOfProcess = 5;
 let process_Obj = {
     process_id: '',
@@ -38,15 +38,60 @@ let id_property_mapping = {
     },
 };
 
-let compareClr = 'blue', completedClr = 'greenyellow', readyClr = 'yellow', runningClr ='orange', defaultClr = 'cyan';
+let color_Obj = {
+    compare: {
+        clr: 'blue',
+        label: 'Compare'
+    },
+    completed: {
+        clr: 'greenyellow',
+        label: 'Completed',
+    },
+    ready: {
+        clr: 'yellow',
+        label: 'Ready'
+    },
+    running: {
+        clr: 'orange',
+        label: 'Running'
+    },
+    default: {
+        clr: 'cyan',
+        label: 'New'
+    }
+};
 
 init();
-createNewArray(noOfProcess);
 
 function init(){
     const ele = document.querySelector("#timestamp");
     if(ele)
         ele.innerHTML = time;
+    get_notation();
+    createNewArray(noOfProcess);
+    temp_array_copy = JSON.parse(JSON.stringify(array));
+}
+
+function get_notation(){
+    const id_element = document.querySelector("#clr_code");
+    for (let key in color_Obj) {
+        const ele = document.createElement("div");
+        ele.style.height = `30px`;
+        ele.classList.add('box-item');
+        ele.classList.add('mb-2');
+        ele.style.background = color_Obj[key].clr ? color_Obj[key].clr : '';
+        id_element.appendChild(ele);
+    }
+
+    const clr_label_element = document.querySelector("#clr_label");
+    for (let key in color_Obj) {
+        const ele = document.createElement("div");
+        ele.style.height = `30px`;
+        ele.classList.add('mb-2');
+        ele.style.fontSize = '20px';
+        ele.innerText = color_Obj[key].label ? color_Obj[key].label : '';
+        clr_label_element.appendChild(ele);
+    }
 }
 
 
@@ -92,7 +137,7 @@ function setSizeOfProcess() {
 
 function changeSpeed() {
     let delayElement = document.querySelector('#speed_input');
-    delay = 320 - parseInt(delayElement.value);
+    delay = 220 - parseInt(delayElement.value);
 }
 
 function createNewArray(noOfProcess) {
@@ -105,6 +150,7 @@ function createNewArray(noOfProcess) {
         temp["arrival_time"] = (Math.floor(Math.random() * 50) % noOfProcess);
         temp["burst_time"] = (Math.floor(Math.random() * 6) % 7) + 1;
         temp["rem_burst_time"] = temp["burst_time"];
+        temp["start_time"] = '';
         temp["completion_time"] = '';
         temp["turn_around_time"] = '';
         temp["waiting_time"] = '';

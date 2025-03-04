@@ -39,6 +39,10 @@ body {
     transition: 0.1s all ease;
 }
 
+.box-item{
+    border: 1pt solid black;
+}
+
 .flex-item-queue{
     background: pink;
     border: 1pt solid black;
@@ -59,4 +63,18 @@ body {
     display: flex;
     padding: 10px;
     justify-content: space-around;
+}
+
+.timeline {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+.time-label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.bar-gantt-chart {
+    border-radius: 5px;
 }
